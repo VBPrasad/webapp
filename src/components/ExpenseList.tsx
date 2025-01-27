@@ -32,6 +32,20 @@ const ExpenseList = ({expenses}:props) => {
                   <td>{expense.note}</td>
                 </tr>
               ))}
+              {/* {expenses
+  .filter((expense) => expense.name === 'Gas Bill')
+  .map((expense) => (
+    <tr key={expense.expensesId}>
+      <td>{expense.id}</td>
+      <td>{expense.expensesId}</td>
+      <td>{expense.name}</td>
+      <td>{expense.amount}</td>
+      <td>{expense.date}</td>
+      <td>{expense.category}</td>
+      <td>{expense.note}</td>
+    </tr>
+  ))} */}
+
             </tbody>
           </table>
         </div>
