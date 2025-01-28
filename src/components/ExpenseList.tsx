@@ -1,4 +1,6 @@
 import { Expense } from "../model/Expense";
+import CurrencyUtils from "../utils/CurrencyUtils";
+import DateUtils from "../utils/DateUtils";
 
 
 interface props{
@@ -26,8 +28,8 @@ const ExpenseList = ({expenses}:props) => {
                   <td>{expense.id}</td>
                   <td>{expense.expensesId}</td>
                   <td>{expense.name}</td>
-                  <td>{expense.amount}</td>
-                  <td>{expense.date}</td>
+                  <td>{CurrencyUtils.formatToINR(expense.amount)}</td>
+                  <td>{DateUtils.formatDateString(expense.date)}</td>
                   <td>{expense.category}</td>
                   <td>{expense.note}</td>
                 </tr>
