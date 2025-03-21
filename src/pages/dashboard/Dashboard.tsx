@@ -12,8 +12,8 @@ const totalexpenses=expenses.reduce((acc:number, expense:Expense)=>acc + expense
  return (
     <div>
       <DashboardStatus 
-   logggedInUser5={loggedInUser2}
-      totalExpenses={totalexpenses}
+       logggedInUser5={loggedInUser2}
+        totalExpenses={totalexpenses}
       />
       <hr />
       {isLoading && <p>Loading</p>}
