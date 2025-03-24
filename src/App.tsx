@@ -7,6 +7,7 @@ import ExpenseReports from './pages/expense/ExpenseReports'
 import ExpenseDetails from './pages/expense/ExpenseDetails'
 import Login from './pages/login/login'
 import Register from './pages/register/Register'
+import Navbar from './components/navbar'
 
 
 
@@ -15,22 +16,27 @@ import Register from './pages/register/Register'
 
 const App = () => {
   return (
-    <BrowserRouter>
-    <Routes>
+    <>
+        <Navbar />
+    <Dashboard />
 
-    <Route path="/" element={<Dashboard />} />
+    </>
+//     <BrowserRouter>
+//     <Routes>
 
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
+//     <Route path="/" element={<Dashboard />} />
 
-<Route path="/new" element={<NewExpense />} />
-<Route path="/reports" element={<ExpenseReports />} />
-<Route path="/view/:expensesId" element={<ExpenseDetails />} />
+//     <Route path="/login" element={<Login />} />
+//     <Route path="/register" element={<Register />} />
+
+// <Route path="/new" element={<NewExpense />} />
+// <Route path="/reports" element={<ExpenseReports />} />
+// <Route path="/view/:expensesId" element={<ExpenseDetails />} />
 
 
 
-    </Routes>
-    </BrowserRouter>
+//     </Routes>
+//     </BrowserRouter>
   )
 }
 
