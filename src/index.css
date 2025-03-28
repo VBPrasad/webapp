@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body, html {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.1em;
+}
+
+/* Colors */
+.app-primary-color {
+    color: #79589F;
+}
+
+nav, .app-primary-bg-color {
+    background-color:#79589F; /* ✅ Changed from `color` to `background-color` */
+}
+
+/* Card styling */
+.card-body {
+    padding: 0 !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid green;
+}
+
+.card-subtitle {
+    margin-top: 1rem;
+}
+.navbar-nav .nav-link, .navbar-toggler{
+    color: white;
+    border-color: white;
+
+}
