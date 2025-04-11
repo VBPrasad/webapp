@@ -11,7 +11,7 @@ const useExpenseByExpenseId = (expensesId: string) => {
   
       setIsLoading(true);
       getExpenseByExpenseId(expensesId)
-        .then((reponse) => setExpense(reponse.data))
+        .then((response) => setExpense(response.data))
         .catch((error) => {
           setErrors(error.message);
           console.log(error);
@@ -19,7 +19,7 @@ const useExpenseByExpenseId = (expensesId: string) => {
         .finally(() => setIsLoading(false));
    
   }, []);
-  return { expense, errors, isLoading };
+  return { expense, errors, isLoading, setIsLoading, setErrors };
 };
 
 export default useExpenseByExpenseId;

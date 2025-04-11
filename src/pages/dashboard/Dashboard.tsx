@@ -8,8 +8,8 @@ const Dashboard = () => {
   const { expenses, error, isLoading } = useExpense();
 
   const totalexpenses = expenses.reduce(
-    (acc: number, expense: Expense) => acc + expense.amount,
-    0
+    (acc: number, expense: Expense) =>
+       acc + expense.amount, 0
   );
   return (
     <div className="container">
