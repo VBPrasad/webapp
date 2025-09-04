@@ -8,7 +8,7 @@ import {  useState } from "react";
 import { deleteExpenseByExpenseId } from "../../services/expense-service";
 
 const ExpenseDetails = () => {
-  let { expensesId } = useParams<{ expensesId: string }>();
+  const { expensesId } = useParams<{ expensesId: string }>();
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const navigate=useNavigate();
   

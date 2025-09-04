@@ -1,6 +1,10 @@
 import React from 'react'
 import { FaBars } from 'react-icons/fa'
 import Logo from './Logo'
+import NewExpense from '../pages/expense/NewExpenses'
+import { Link } from 'react-router-dom'
+
+
 
 const navbar = () => {
   return (
@@ -16,6 +20,8 @@ const navbar = () => {
       <a className="nav-link" href="#">Features</a>
       <a className="nav-link" href="#">Pricing</a>
       <a className="nav-link" href="#">Disabled</a>
+       <a className="nav-link" href="/NewExpense">new expenses</a>
+      
       
     </div>
   </div>

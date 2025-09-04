@@ -8,6 +8,7 @@ export const useExpense = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true)
     getExpenses()
       .then((response) => {
         setExpense(response.data);
