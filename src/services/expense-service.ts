@@ -13,5 +13,8 @@ export const deleteExpenseByExpenseId = (expenseId: string)=>{
   return apiClient.delete<void>(`/expenses/${expenseId}`)
 }
 export const saveOrUpdateExpense =(expense: Expense)=>{
+  if(expense.expensesId !== undefined || expense.expensesId !=  null){
+    return apiClient.put<Expense>(`/expenses/${expense.expensesId}`,expense)
+  }
   return apiClient.post<Expense>('/expenses',expense)
 }

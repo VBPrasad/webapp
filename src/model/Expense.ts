@@ -1,6 +1,6 @@
 export interface Expense{
     id?:number;
-    expensesId:number;
+    expensesId?:number;
     name:string;
     note:string;
     amount:number;
