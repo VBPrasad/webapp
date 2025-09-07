@@ -14,12 +14,12 @@ interface Props {
 const Dropdown = ({options,id,name,value, onChange, OnBlur, label, error, touched}:Props) => {
   return (
     <div className="mb-3">
-      <label htmlFor={id} className="form-lable">
+      <label htmlFor={id} className="form-label">
         Category
       </label>
       <select name={name} id={id} className="form-control"
-      onChange={onChange} onBlur={OnBlur}>
-        <option value={value} label={label} />
+      onChange={onChange} onBlur={OnBlur} value={value}>
+        <option value="" label={label} />
         {options.map(option=><option key={option} value={option} label={option}/>)}
       </select>
       {touched && error ?  

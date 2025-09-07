@@ -3,30 +3,52 @@ import { Expense } from "../../model/Expense";
 import expenseVaidationSchema from "../../validation/expenseValidationSchema";
 import Dropdown from "../../components/Dropdown";
 import { expenseCategories } from "../../utils/AppConstant";
-import { saveOrUpdateExpense } from "../../services/expense-service";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { getExpenseByExpenseId, saveOrUpdateExpense } from "../../services/expense-service";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NewExpense = () => {
+  const {expensesId}=useParams<{expensesId: string}>();
   const navigate= useNavigate();
   const [ error, setError]= useState<string>("")
-  const formik = useFormik({
-    initialValues: {
+  const [isLoading, setLoader] = useState<boolean>(false)
+  const [initialValues, setInitialValues]= useState<Expense>( {
       name: "",
       amount: 0,
       note: "",
       category: "",
-      date: new Date().toISOString().split("T")[0],
-    },
+      date: new Date().toISOString().split('T')[0]
+  })
+
+  useEffect(()=>{
+    setLoader(true)
+    if(expensesId){
+      getExpenseByExpenseId(expensesId)
+        .then(response=>{
+          if(response && response.data){
+            setInitialValues(response.data)
+          }
+        })
+        .catch(error=>setError(error.message))
+        .finally(()=>setLoader(false));
+      }
+    },  [expensesId]);
+
+  const formik = useFormik({
+    initialValues,
+    enableReinitialize:true,
     onSubmit: (values: Expense) => {
       saveOrUpdateExpense(values)
       .then((response)=> {
-      if(response  && response.status==200){
-      navigate("/")}})
+      if(response  && response.status===200){
+      navigate("/")
+    }else if (response && response.status !== 200)
+      navigate(`/view/${expensesId}`)
+    })
     
       .catch((error)=> {
         console.log(error)
-      setError(error.name);
+      setError(error.message);
       });
       
     },
@@ -38,6 +60,7 @@ const NewExpense = () => {
     
       <div className="container col-md-4 col-sm-3 col-xs-12">
           {error && <p className="text-danger fst-italic"> {error} </p>}
+    
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
@@ -124,7 +147,7 @@ const NewExpense = () => {
       OnBlur={formik.handleBlur}
           error={formik.errors.category}
           touched={formik.touched.category}
-          value="Category"
+          value={formik.values.category}
            />
           <button
             className="btn btn-sm btn-primary btn-outline0light"
